@@ -218,14 +218,16 @@ if ($('#text_list_flow').length) {
 // --------Magnify-popup
 
 $(function() {
-    $('.popup-youtube').magnificPopup({
-        disableOn: 700,
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false
-    });
+    if ($.fn.magnificPopup && $('.popup-youtube').length) {
+        $('.popup-youtube').magnificPopup({
+            disableOn: 700,
+            type: 'iframe',
+            mainClass: 'mfp-fade',
+            removalDelay: 160,
+            preloader: false,
+            fixedContentPos: false
+        });
+    }
 });
 
 
@@ -331,28 +333,41 @@ $(window).on('resize', function() {
   }
 })();
 
-// Scrool-top
-$(document).ready(function() {
-  var toTop = $('.go_top');
-  toTop.on('click', function() {
-    $('html, body').animate({scrollTop: $('html, body').offset().top,}, 400);
-  });
+// Retour en haut (landing & pages services)
+(function () {
+  var goTop = document.querySelector('.go_top');
+  if (!goTop) return;
 
-  $(window).scroll(function() {
-    // declare variable
-    var topPos = $(this).scrollTop();
+  var showAfter = 400;
 
-    // if user scrolls down - show scroll to top button
-    if (topPos > 750) {
-      $(toTop).css("opacity", "1");
+  function updateVisibility() {
+    var scrolled = window.scrollY || document.documentElement.scrollTop;
+    goTop.classList.toggle('is-visible', scrolled > showAfter);
+  }
 
-    } else {
-      $(toTop).css("opacity", "0");
+  function scrollToTop(event) {
+    if (event) {
+      event.preventDefault();
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
+  if (!goTop.getAttribute('role')) {
+    goTop.setAttribute('role', 'button');
+    goTop.setAttribute('tabindex', '0');
+    goTop.setAttribute('aria-label', 'Retour en haut de la page');
+  }
+
+  goTop.addEventListener('click', scrollToTop);
+  goTop.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      scrollToTop(event);
+    }
   });
 
-});
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  updateVisibility();
+})();
 
 // Fix Header Js (désactivé sur la landing MonChauffeurVIP)
 $(window).scroll(function(){

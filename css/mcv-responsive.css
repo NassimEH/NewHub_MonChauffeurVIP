@@ -1,0 +1,413 @@
+/* MonChauffeurVIP Hub — responsive global (toutes les pages) */
+
+/* --- Base : pas de débordement horizontal --- */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.mcv-landing {
+    overflow-x: clip;
+    scroll-snap-type: none !important;
+}
+
+.mcv-landing .page_wrapper {
+    overflow-x: clip;
+    max-width: 100%;
+}
+
+.mcv-landing img,
+.mcv-landing video {
+    max-width: 100%;
+    height: auto;
+}
+
+.mcv-landing .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: clamp(16px, 4.5vw, 28px);
+    padding-right: clamp(16px, 4.5vw, 28px);
+}
+
+/* --- Titres de section (override template : padding 300px) --- */
+.mcv-landing .section_title p {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mcv-landing .mcv-hub-why-section.row_am {
+    background: #fff;
+}
+
+.mcv-landing .mcv-svc-section.row_am,
+.mcv-landing.mcv-page-service .mcv-service-highlights-section.row_am {
+    padding-top: clamp(40px, 7vw, 72px);
+    padding-bottom: clamp(40px, 7vw, 72px);
+}
+
+.mcv-landing .mcv-hub-why-section.section_inner_padding {
+    padding-top: clamp(48px, 8vw, 88px);
+    padding-bottom: clamp(48px, 8vw, 88px);
+}
+
+.mcv-landing .mcv-svc-section.section_inner_padding {
+    padding-top: clamp(48px, 8vw, 88px);
+    padding-bottom: clamp(48px, 8vw, 88px);
+}
+
+.mcv-landing .mcv-svc-section .section_title h2,
+.mcv-landing .mcv-hub-why-section .section_title h2,
+.mcv-landing.mcv-page-service .mcv-features-section .mcv-features-heading h2,
+.mcv-landing.mcv-page-service .mcv-service-highlights-section .section_title h2,
+.mcv-landing.mcv-page-service .mcv-howwork-section .section_title h2 {
+    font-size: clamp(1.5rem, 5.2vw, 2.35rem);
+    line-height: 1.18;
+    hyphens: auto;
+}
+
+.mcv-landing .mcv-svc-section .section_title p,
+.mcv-landing .mcv-hub-why-section .section_title p {
+    font-size: clamp(0.9375rem, 2.6vw, 1.125rem);
+    line-height: 1.55;
+}
+
+/* --- Hero : typo fluide --- */
+.mcv-landing .banner_section .banner_text h1 {
+    font-size: clamp(1.75rem, 5.8vw, 3.25rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+}
+
+.mcv-landing .banner_section .banner_text p:not(.mcv-hero-trust-line) {
+    font-size: clamp(0.9375rem, 2.8vw, 1.125rem);
+    line-height: 1.55;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.mcv-landing .banner_section .banner_text .type-wrap {
+    max-width: 100%;
+}
+
+.mcv-landing .banner_section .banner_text .type-wrap .typed {
+    font-size: clamp(0.8125rem, 2.4vw, 1rem);
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.mcv-landing .banner_section--fullscreen .banner_text {
+    max-width: 100%;
+    width: 100%;
+}
+
+.mcv-landing #mcv-hero.mcv-hero--hub .banner_text {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Pages hub / services / app : pas de scroll-snap ni hauteur bloquée --- */
+.mcv-landing.mcv-page-hub .banner_section--fullscreen,
+.mcv-landing.mcv-page-service .banner_section--fullscreen,
+.mcv-landing.mcv-page-app .banner_section--fullscreen {
+    scroll-snap-align: none !important;
+    scroll-snap-stop: normal !important;
+}
+
+@media (max-width: 991px) {
+    .mcv-landing .mcv-footer .top_footer {
+        padding-top: 72px;
+    }
+
+    .mcv-landing.mcv-page-service .banner_section--fullscreen,
+    .mcv-landing.mcv-page-app .banner_section--fullscreen {
+        max-height: none;
+        min-height: 0;
+        height: auto;
+        overflow: visible;
+        padding-top: clamp(72px, 14vw, 96px);
+        padding-bottom: clamp(28px, 5vw, 48px);
+    }
+
+    .mcv-landing.mcv-page-service .mcv-service-hero .banner_text,
+    .mcv-landing.mcv-page-app .mcv-app-hero .banner_text {
+        text-align: center;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-service-hero .banner_text p.mcv-hero-trust-line,
+    .mcv-landing.mcv-page-app .mcv-app-hero .banner_text p.mcv-hero-trust-line {
+        justify-content: center;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-hero-cta-wrap,
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-hero-visual.mcv-hero-visual--photo,
+    .mcv-landing.mcv-page-app .mcv-hero-visual {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-hero-visual--photo .hero_image_1,
+    .mcv-landing.mcv-page-app .mcv-hero-visual .hero_image_1 {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-app-logo {
+        width: min(200px, 58vw);
+        height: min(200px, 58vw);
+        max-width: 200px;
+        max-height: 200px;
+    }
+
+    .mcv-landing.mcv-page-hub .mcv-hub-why-section {
+        padding-top: clamp(48px, 7vw, 72px);
+        padding-bottom: clamp(48px, 7vw, 72px);
+    }
+
+    .mcv-landing.mcv-page-service .mcv-service-template-section .inner_sec {
+        padding-top: clamp(40px, 6vw, 64px);
+    }
+
+    .mcv-landing.mcv-page-service .mcv-features-section > .mcv-hero-scroll {
+        display: none;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-howwork-section > .mcv-hero-scroll {
+        display: none;
+    }
+
+    .mcv-landing .mcv-svc-section .row.align-items-center > [class*="col-"] + [class*="col-"] {
+        margin-top: 8px;
+    }
+
+    .mcv-landing .mcv-svc-section .section_title.text-left {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .mcv-landing .mcv-svc-section .section_title.text-left h2 {
+        text-align: center;
+    }
+
+    .mcv-landing .mcv-svc-list {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .mcv-landing header .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .mcv-landing .mcv-hero-scroll {
+        bottom: 16px;
+    }
+
+    .mcv-landing .banner_section .mcv-hero-float-card {
+        max-width: calc(100% - 32px);
+    }
+
+    .mcv-landing .mcv-hero-float-card__inner {
+        padding: 10px 14px;
+    }
+}
+
+@media (max-width: 575px) {
+    .mcv-landing .banner_section--fullscreen {
+        padding-top: 72px;
+        padding-bottom: 36px;
+    }
+
+    .mcv-landing .banner_section--fullscreen > .container {
+        padding-top: 0;
+    }
+
+    .mcv-landing .banner_section .banner_text h1 {
+        font-size: clamp(1.625rem, 7.5vw, 2rem);
+        margin-bottom: 12px;
+    }
+
+    .mcv-landing .banner_section .banner_text p.mcv-hero-trust-line {
+        justify-content: center;
+        gap: 4px 8px;
+        font-size: 12px;
+        line-height: 1.45;
+    }
+
+    .mcv-landing .mcv-hero-cta-wrap {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 10px;
+        margin-top: 18px;
+        margin-bottom: 14px;
+    }
+
+    .mcv-landing .mcv-hero-cta-wrap .mcv-btn-reserver,
+    .mcv-landing .mcv-hero-cta-wrap .mcv-btn-google-reviews {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .mcv-landing .mcv-btn-google-reviews {
+        white-space: normal;
+        text-align: center;
+        line-height: 1.25;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 8px;
+        margin-left: 0;
+        margin-right: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores {
+        width: auto;
+        flex: 0 1 auto;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li {
+        flex: 0 0 auto;
+        min-width: 0;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-cta-site {
+        flex: 0 0 auto;
+        width: auto;
+    }
+
+    .mcv-landing .mcv-svc-card {
+        padding: 22px 18px;
+    }
+
+    .mcv-landing .mcv-svc-cta-box,
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box {
+        padding: 32px 22px 32px 28px;
+        border-radius: 12px;
+    }
+
+    .mcv-landing .mcv-svc-cta-box .section_title h2,
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .section_title h3 {
+        font-size: clamp(1.35rem, 6vw, 1.75rem);
+    }
+
+    .mcv-landing .mcv-hub-services-nav {
+        gap: 8px;
+        margin-top: 28px;
+    }
+
+    .mcv-landing .mcv-hub-services-nav__link {
+        flex: 1 1 calc(50% - 4px);
+        justify-content: center;
+        min-width: 0;
+        padding: 10px 12px;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .mcv-landing .mcv-footer .top_footer {
+        padding-top: 56px;
+    }
+
+    .mcv-landing .mcv-footer-main {
+        gap: 28px;
+        max-width: 100%;
+    }
+
+    .mcv-landing .mcv-footer-col {
+        align-items: center;
+        text-align: center;
+    }
+
+    .mcv-landing .mcv-footer-logo img {
+        width: min(200px, 72vw);
+        height: auto;
+    }
+
+    .mcv-landing .mcv-footer-contact-link__value {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .mcv-landing .mcv-footer-bottom__inner {
+        gap: 16px;
+    }
+
+    .mcv-landing .mcv-footer-site-link {
+        text-align: center;
+    }
+
+    .mcv-landing .go_top {
+        right: 14px;
+        bottom: 14px;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 399px) {
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores {
+        flex-direction: row;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li {
+        flex: 0 0 auto;
+        width: auto;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li a.mcv-store-badge,
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-cta-site {
+        width: auto;
+        justify-content: center;
+    }
+
+    .mcv-landing .mcv-hub-services-nav__link {
+        flex: 1 1 100%;
+    }
+
+    .mcv-landing header .navbar-brand img {
+        width: 140px;
+        max-height: 40px;
+    }
+}
+
+/* Tablette paysage / petit desktop : nav compacte */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .mcv-landing header .mcv-nav-center .nav-item .nav-link .mcv-nav-label-long {
+        display: none;
+    }
+
+    .mcv-landing header .mcv-nav-center .nav-item .nav-link .mcv-nav-label-short {
+        display: inline;
+    }
+}
