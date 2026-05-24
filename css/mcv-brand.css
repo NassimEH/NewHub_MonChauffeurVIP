@@ -6797,3 +6797,14 @@ body.mcv-landing {
     border-color: transparent;
 }
 
+/* Réduction des animations si l'utilisateur le demande (perf + accessibilité) */
+@media (prefers-reduced-motion: reduce) {
+    .mcv-landing .moving_position_animatin,
+    .mcv-landing .mcv-hero-scroll__icon,
+    .mcv-landing .mcv-hero-float-card,
+    .mcv-landing .mcv-hero-photo-float,
+    .mcv-landing .mcv-hero-app-logo-wrap {
+        animation: none !important;
+    }
+}
+
