@@ -10,7 +10,6 @@
   <title>TLD | Transport Longue Distance</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/aos.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/mcv-brand.css">
@@ -21,16 +20,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+  <style id="mcv-critical">
+    body.mcv-landing #preloader { display: none !important; pointer-events: none !important; visibility: hidden !important; }
+    body.mcv-landing .dotes_anim_bloack,
+    body.mcv-landing .dotes_anim_bloack * { pointer-events: none !important; }
+    body.mcv-landing .purple_backdrop { display: none !important; pointer-events: none !important; }
+  </style>
 </head>
 
 <body class="mcv-landing mcv-page-service mcv-page-tld">
 
   <div class="page_wrapper">
-
-    <div id="preloader">
-      <div id="loader"></div>
-    </div>
 
     <header>
       <div class="container">
@@ -69,12 +69,12 @@
               <a class="nav-link" href="blog.html">Blog</a>
             </li>
             <li class="nav-item d-lg-none">
-              <a class="btn mcv-btn-reserver" href="https://www.transport-longue-distance.com/" target="_blank" rel="noopener noreferrer">Réserver</a>
+              <a class="btn mcv-btn-reserver" href="https://www.transport-longue-distance.com/contactez-nous/" target="_blank" rel="noopener noreferrer">Réserver</a>
             </li>
           </ul>
         </div>
 
-        <a class="btn mcv-btn-reserver mcv-btn-reserver--desktop d-none d-lg-inline-flex" href="https://www.transport-longue-distance.com/" target="_blank" rel="noopener noreferrer">Réserver</a>
+        <a class="btn mcv-btn-reserver mcv-btn-reserver--desktop d-none d-lg-inline-flex" href="https://www.transport-longue-distance.com/contactez-nous/" target="_blank" rel="noopener noreferrer">Réserver</a>
 
         </nav>
       </div>
@@ -108,7 +108,7 @@
               <p><span class="mcv-hero-lead">Réservez votre chauffeur VTC</span> pour une longue distance en quelques clics : transferts nationaux et européens, véhicules berline ou VAN, service premium sur réservation.</p>
 
               <div class="mcv-hero-cta-wrap">
-                <a class="btn mcv-btn-reserver mcv-hero-cta-site" href="https://www.transport-longue-distance.com/" target="_blank" rel="noopener noreferrer">Accéder au site</a>
+                <a class="btn mcv-btn-reserver mcv-hero-cta-site" href="https://www.transport-longue-distance.com/contactez-nous/" target="_blank" rel="noopener noreferrer">Accéder au site</a>
                 <a class="btn mcv-btn-google-reviews" href="https://share.google/GGSSktTO4SmIzMHUB" target="_blank" rel="noopener noreferrer">
                   <img src="images/google-g-icon.svg" alt="" width="22" height="22" class="mcv-btn-google-reviews__icon" aria-hidden="true">
                   Voir tous les avis Google
@@ -354,7 +354,7 @@
           </div>
           <div class="right">
             <div class="btn_block mcv-service-cta-actions">
-              <a class="btn mcv-btn-reserver mcv-cta-btn mcv-cta-btn--book" href="https://www.transport-longue-distance.com/" target="_blank" rel="noopener noreferrer">Accéder au site</a>
+              <a class="btn mcv-btn-reserver mcv-cta-btn mcv-cta-btn--book" href="https://www.transport-longue-distance.com/contactez-nous/" target="_blank" rel="noopener noreferrer">Accéder au site</a>
               <a class="btn mcv-btn-google-reviews mcv-cta-btn mcv-cta-btn--reviews" href="https://share.google/GGSSktTO4SmIzMHUB" target="_blank" rel="noopener noreferrer">
                 <img src="images/google-g-icon.svg" alt="" width="22" height="22" class="mcv-btn-google-reviews__icon" aria-hidden="true">
                 Voir tous les avis Google
@@ -472,14 +472,10 @@
     </div>
 
 
-    <div class="purple_backdrop"></div>
-
   </div>
 
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/typed.min.js"></script>
   <script src="js/mcv-typed.js"></script>
   <script src="js/main.js"></script>
 

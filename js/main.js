@@ -15,19 +15,56 @@ function mcvHidePreloader() {
   preloader.style.visibility = 'hidden';
   preloader.setAttribute('aria-hidden', 'true');
   preloader.classList.add('is-hidden');
-  window.setTimeout(function () {
-    preloader.style.display = 'none';
-  }, 220);
+  if (preloader.parentNode) {
+    preloader.parentNode.removeChild(preloader);
+  }
+}
+
+/** Débloque l’UI si un overlay template ou Bootstrap reste actif */
+function mcvEnsurePageInteractive() {
+  mcvHidePreloader();
+
+  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
+
+  document.querySelectorAll('.modal-backdrop').forEach(function (node) {
+    node.parentNode.removeChild(node);
+  });
+
+  var purple = document.querySelector('.purple_backdrop');
+  if (purple) {
+    purple.style.pointerEvents = 'none';
+    purple.style.opacity = '0';
+    purple.style.visibility = 'hidden';
+  }
+
+  var header = document.querySelector('header');
+  if (header && IS_MCV_LANDING) {
+    header.classList.remove('fix_style', 'fixed');
+  }
 }
 
 (function mcvPreloaderInit() {
+  mcvHidePreloader();
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mcvHidePreloader);
+    document.addEventListener('DOMContentLoaded', mcvEnsurePageInteractive);
   } else {
-    mcvHidePreloader();
+    mcvEnsurePageInteractive();
   }
-  window.addEventListener('load', mcvHidePreloader);
-  window.setTimeout(mcvHidePreloader, 800);
+  window.addEventListener('load', mcvEnsurePageInteractive);
+  window.setTimeout(mcvEnsurePageInteractive, 400);
+  window.setTimeout(mcvEnsurePageInteractive, 2000);
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted) {
+      mcvEnsurePageInteractive();
+    }
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') {
+      mcvEnsurePageInteractive();
+    }
+  });
 })();
 
 function mcvThrottleRaf(fn) {
@@ -178,8 +215,9 @@ if (!IS_MCV_LANDING) {
 }
 
 // Magnific Popup (si présent)
-$(function () {
-  if ($.fn.magnificPopup && $('.popup-youtube').length) {
+if (typeof jQuery !== 'undefined') {
+jQuery(function () {
+  if (jQuery.fn.magnificPopup && jQuery('.popup-youtube').length) {
     $('.popup-youtube').magnificPopup({
       disableOn: 700,
       type: 'iframe',
@@ -190,6 +228,7 @@ $(function () {
     });
   }
 });
+}
 
 if (typeof jQuery !== 'undefined' && jQuery('.tog_block').length) {
 jQuery(document).ready(function () {
@@ -312,62 +351,64 @@ if (!IS_MCV_LANDING) {
 }
 
 // Vidéo YouTube modale (template)
-if ($('.play-button').length) {
-  $('.play-button').click(function () {
-    $('#youtubevideo').attr('src', $(this).data('url'));
+if (typeof jQuery !== 'undefined' && jQuery('.play-button').length) {
+  jQuery('.play-button').click(function () {
+    jQuery('#youtubevideo').attr('src', jQuery(this).data('url'));
   });
 }
 
-if ($('#close-video').length) {
-  $('#close-video').click(function () {
-    $('#youtubevideo').attr('src', '');
+if (typeof jQuery !== 'undefined' && jQuery('#close-video').length) {
+  jQuery('#close-video').click(function () {
+    jQuery('#youtubevideo').attr('src', '');
   });
 }
 
-if ($('#myModal').length) {
-  $(document).on('hidden.bs.modal', '#myModal', function () {
-    $('#youtubevideo').attr('src', '');
+if (typeof jQuery !== 'undefined' && jQuery('#myModal').length) {
+  jQuery(document).on('hidden.bs.modal', '#myModal', function () {
+    jQuery('#youtubevideo').attr('src', '');
+    mcvEnsurePageInteractive();
   });
 }
 
-$(document).ready(function () {
-  $('.navbar-toggler').click(function () {
-    var $icon = $(this).children('span').children('.ico_menu');
-    if ($icon.length) {
-      $icon.toggleClass('icofont-navigation-menu icofont-close');
+if (typeof jQuery !== 'undefined') {
+  jQuery(document).ready(function () {
+    jQuery('.navbar-toggler').click(function () {
+      var $icon = jQuery(this).children('span').children('.ico_menu');
+      if ($icon.length) {
+        $icon.toggleClass('icofont-navigation-menu icofont-close');
+      }
+      jQuery(this).children('.toggle-wrap').toggleClass('active');
+    });
+
+    var navCollapse = document.getElementById('navbarSupportedContent');
+    if (navCollapse) {
+      jQuery(navCollapse).on('hidden.bs.collapse shown.bs.collapse', function () {
+        window.setTimeout(mcvEnsurePageInteractive, 50);
+      });
     }
-    $(this).children('.toggle-wrap').toggleClass('active');
   });
-});
+}
 
-// AOS — uniquement si des éléments animés existent
-if (typeof AOS !== 'undefined' && document.querySelector('[data-aos]')) {
-  if (IS_MCV_LANDING) {
-    document.querySelectorAll('[data-aos-duration]').forEach(function (el) {
-      var duration = parseInt(el.getAttribute('data-aos-duration'), 10);
-      if (!Number.isNaN(duration) && duration > 0) {
-        el.setAttribute('data-aos-duration', String(Math.max(450, Math.round(duration * 0.75))));
-      }
-    });
-
-    document.querySelectorAll('[data-aos-delay]').forEach(function (el) {
-      var delay = parseInt(el.getAttribute('data-aos-delay'), 10);
-      if (!Number.isNaN(delay) && delay > 0) {
-        el.setAttribute('data-aos-delay', String(Math.max(0, Math.round(delay * 0.7))));
-      }
-    });
-  }
-
+// AOS — désactivé sur pages MCV (scroll listener + MutationObserver = gel au fil du temps)
+if (!IS_MCV_LANDING && typeof AOS !== 'undefined' && document.querySelector('[data-aos]')) {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var isNarrow = window.matchMedia('(max-width: 767px)').matches;
 
   AOS.init({
     duration: 700,
     easing: 'ease-out-cubic',
     once: true,
-    disable: reduceMotion || isNarrow ? true : false,
+    disable: reduceMotion,
     throttleDelay: 99,
     debounceDelay: 50,
+  });
+}
+
+if (IS_MCV_LANDING) {
+  document.querySelectorAll('[data-aos]').forEach(function (el) {
+    el.removeAttribute('data-aos');
+    el.removeAttribute('data-aos-duration');
+    el.removeAttribute('data-aos-delay');
+    el.classList.add('aos-init');
   });
 }
 

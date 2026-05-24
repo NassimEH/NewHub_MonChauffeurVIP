@@ -6798,20 +6798,27 @@ body.mcv-landing {
     border-color: transparent;
 }
 
-/* Preloader : jamais bloquer souris / clic droit (opacity 0 seul ne suffit pas) */
+/* Preloader template : désactivé sur pages MCV (overlay plein écran z-index 999999) */
 .mcv-landing #preloader {
-    pointer-events: none !important;
-    transition: opacity 0.2s ease;
-    animation: none !important;
-}
-
-.mcv-landing #preloader.is-hidden,
-.mcv-landing #preloader[aria-hidden="true"] {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
     z-index: -1 !important;
+    animation: none !important;
+}
+
+.mcv-landing #preloader #loader,
+.mcv-landing #preloader #loader::before,
+.mcv-landing #preloader #loader::after {
+    animation: none !important;
+}
+
+/* Points décoratifs : ne jamais intercepter clics (orbites 120px sur toute la page) */
+.mcv-landing .dotes_anim_bloack,
+.mcv-landing .dotes_anim_bloack .dots,
+.mcv-landing .dotes_anim_bloack .dots::before {
+    pointer-events: none !important;
 }
 
 /* Points décoratifs : alléger le GPU sur pages hub/services */
