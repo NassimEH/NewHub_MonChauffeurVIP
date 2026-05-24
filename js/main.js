@@ -1,6 +1,31 @@
 /* global AOS */
 'use strict';
 
+/**
+ * Extensions Chrome (traduction, adblock, gestionnaires de mots de passe, etc.)
+ * injectent parfois ce rejet de promesse — ce n’est pas une erreur du site MCV.
+ */
+(function mcvIgnoreExtensionMessagingNoise() {
+  function isExtensionChannelError(reason) {
+    var message = '';
+    if (reason && typeof reason.message === 'string') {
+      message = reason.message;
+    } else if (typeof reason === 'string') {
+      message = reason;
+    }
+    return (
+      message.indexOf('message channel closed') !== -1 &&
+      message.indexOf('asynchronous response') !== -1
+    );
+  }
+
+  window.addEventListener('unhandledrejection', function (event) {
+    if (isExtensionChannelError(event.reason)) {
+      event.preventDefault();
+    }
+  });
+})();
+
 var IS_MCV_LANDING = document.body.classList.contains('mcv-landing');
 
 /** Masque le preloader tout de suite (sans jQuery) pour ne pas bloquer clics / menu contextuel */
