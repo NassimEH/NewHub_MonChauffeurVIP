@@ -3,6 +3,33 @@
 
 var IS_MCV_LANDING = document.body.classList.contains('mcv-landing');
 
+/** Masque le preloader tout de suite (sans jQuery) pour ne pas bloquer clics / menu contextuel */
+function mcvHidePreloader() {
+  var preloader = document.getElementById('preloader');
+  if (!preloader || preloader.dataset.mcvHidden === '1') {
+    return;
+  }
+  preloader.dataset.mcvHidden = '1';
+  preloader.style.pointerEvents = 'none';
+  preloader.style.opacity = '0';
+  preloader.style.visibility = 'hidden';
+  preloader.setAttribute('aria-hidden', 'true');
+  preloader.classList.add('is-hidden');
+  window.setTimeout(function () {
+    preloader.style.display = 'none';
+  }, 220);
+}
+
+(function mcvPreloaderInit() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mcvHidePreloader);
+  } else {
+    mcvHidePreloader();
+  }
+  window.addEventListener('load', mcvHidePreloader);
+  window.setTimeout(mcvHidePreloader, 800);
+})();
+
 function mcvThrottleRaf(fn) {
   var scheduled = false;
   return function () {
@@ -28,23 +55,11 @@ function mcvInitOwlCarousel(selector, options) {
 }
 
 // Sous-menu (template)
-if ($('.drp_btn').length) {
-  $('.drp_btn').click(function () {
-    $(this).siblings('.sub_menu').slideToggle();
+if (typeof jQuery !== 'undefined' && jQuery('.drp_btn').length) {
+  jQuery('.drp_btn').click(function () {
+    jQuery(this).siblings('.sub_menu').slideToggle();
   });
 }
-
-// Preloader
-function preloader_fade() {
-  var $preloader = $('#preloader');
-  if ($preloader.length) {
-    $preloader.fadeOut('slow');
-  }
-}
-
-$(document).ready(function () {
-  window.setTimeout(preloader_fade, 500);
-});
 
 // Carrousels template (pages hub MCV : aucun de ces sélecteurs)
 if (!IS_MCV_LANDING) {
@@ -176,9 +191,9 @@ $(function () {
   }
 });
 
-if ($('.tog_block').length) {
-$(document).ready(function () {
-  $('.tog_block').click(function () {
+if (typeof jQuery !== 'undefined' && jQuery('.tog_block').length) {
+jQuery(document).ready(function () {
+  jQuery('.tog_block').click(function () {
     $('.tog_btn').toggleClass('month_active');
     $('.month').toggleClass('active');
     $('.years').toggleClass('active');
@@ -188,9 +203,9 @@ $(document).ready(function () {
 });
 }
 
-if ($('.collapse').length) {
-$(document).ready(function () {
-  $('.collapse.show').each(function () {
+if (typeof jQuery !== 'undefined' && jQuery('.collapse').length) {
+jQuery(document).ready(function () {
+  jQuery('.collapse.show').each(function () {
     $(this)
       .prev('.card-header')
       .find('.icon_faq')
@@ -292,8 +307,8 @@ if (!IS_MCV_LANDING) {
       $('header').toggleClass('fixed', scrollTop >= 260);
     })
   );
-} else {
-  $('header').removeClass('fix_style fixed');
+} else if (typeof jQuery !== 'undefined') {
+  jQuery('header').removeClass('fix_style fixed');
 }
 
 // Vidéo YouTube modale (template)
