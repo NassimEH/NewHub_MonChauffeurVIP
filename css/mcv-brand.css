@@ -614,6 +614,61 @@
     }
 }
 
+/* Navigation hero — service précédent / suivant (ordre du menu header) */
+.mcv-landing .mcv-hero-service-nav {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: clamp(72px, 12vw, 100px) clamp(10px, 2.5vw, 24px) clamp(48px, 8vw, 72px);
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.mcv-landing .mcv-hero-service-nav__btn {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: clamp(40px, 10vw, 48px);
+    height: clamp(40px, 10vw, 48px);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 2px solid var(--mcv-page-accent, var(--mcv-gold));
+    color: var(--mcv-dark);
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(31, 27, 20, 0.14);
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.mcv-landing .mcv-hero-service-nav__btn .material-icons {
+    font-size: clamp(26px, 6vw, 30px);
+    line-height: 1;
+}
+
+.mcv-landing .mcv-hero-service-nav__btn:hover,
+.mcv-landing .mcv-hero-service-nav__btn:focus-visible {
+    background-color: #fff;
+    border-color: var(--mcv-page-accent-dark, var(--mcv-gold-dark));
+    box-shadow: 0 6px 22px color-mix(in srgb, var(--mcv-page-accent, var(--mcv-gold)) 35%, transparent);
+    transform: scale(1.04);
+}
+
+.mcv-landing .mcv-hero-service-nav__btn:focus {
+    outline: none;
+}
+
+.mcv-landing .mcv-hero-service-nav__btn:focus-visible {
+    outline: 2px solid var(--mcv-page-accent, var(--mcv-gold));
+    outline-offset: 3px;
+}
+
 .mcv-landing #mcv-features {
     scroll-margin-top: 0;
 }
@@ -5285,6 +5340,18 @@ body.mcv-landing {
     border-radius: 6px;
 }
 
+.mcv-landing.mcv-page-chauffeur .mcv-footer-logo img,
+.mcv-landing.mcv-page-chauffeur .mcv-footer-logo .mcv-brand-logo__img {
+    max-width: min(260px, 76vw);
+    max-height: 64px;
+}
+
+.mcv-landing.mcv-page-app .mcv-footer-logo img,
+.mcv-landing.mcv-page-app .mcv-footer-logo .mcv-brand-logo__img {
+    max-width: min(260px, 76vw);
+    max-height: 64px;
+}
+
 .mcv-landing .mcv-footer-tagline {
     margin: 0 auto;
     max-width: 340px;
@@ -5524,7 +5591,7 @@ body.mcv-landing {
     }
 
     .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box {
-        padding: 40px 32px 40px 36px;
+        padding: clamp(28px, 5vw, 40px) clamp(20px, 4vw, 32px);
     }
 
     .mcv-landing .mcv-cta-section .cta_box .section_title {
@@ -6331,81 +6398,111 @@ body.mcv-landing {
     z-index: 2;
 }
 
+.mcv-landing.mcv-page-service .mcv-service-cta-section.cta_section.new .cta_box {
+    justify-content: unset;
+}
+
+.mcv-landing.mcv-page-service .mcv-service-cta-section .container {
+    max-width: 100%;
+    padding-left: clamp(16px, 4vw, 15px);
+    padding-right: clamp(16px, 4vw, 15px);
+}
+
+/* Bandeau CTA bas de page — grille (évite le vide entre texte et boutons du flex template) */
 .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box {
-    padding: clamp(48px, 5vw, 64px) clamp(40px, 4.5vw, 56px) clamp(48px, 5vw, 64px) clamp(56px, 6.5vw, 80px);
-}
-
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 100%;
-    padding-left: 100px;
-    box-sizing: border-box;
-}
-
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title h3 {
-    width: 100%;
-    margin-bottom: 8px;
-}
-
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title p {
-    width: 100%;
-    margin: 0;
-}
-
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .left {
-    flex: 1 1 36%;
-    min-width: 0;
-    max-width: 42%;
-}
-
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box:has(.mcv-service-cta-actions--stores) {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(min-content, auto);
     align-items: center;
-    gap: clamp(24px, 4vw, 48px);
+    gap: clamp(20px, 3.5vw, 40px);
+    padding: clamp(32px, 5vw, 56px) clamp(24px, 4vw, 48px);
 }
 
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box:has(.mcv-service-cta-actions--stores) .left {
+.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .left,
+.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .right {
     flex: unset;
-    max-width: none;
     min-width: 0;
+    max-width: 100%;
+    width: auto;
 }
 
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box:has(.mcv-service-cta-actions--stores) .right {
-    width: auto;
-    max-width: 100%;
+.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .right {
     justify-self: end;
 }
 
+.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: clamp(12px, 2.5vw, 18px);
+    row-gap: 6px;
+    align-items: start;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    box-sizing: border-box;
+}
+
 .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title .customer_icon {
-    left: 16px;
+    position: relative;
+    left: auto;
+    top: auto;
+    grid-column: 1;
+    grid-row: 1 / -1;
+    align-self: center;
+    font-size: clamp(40px, 7vw, 56px);
+    line-height: 1;
+    margin: 0;
+}
+
+.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title h3 {
+    grid-column: 2;
+    width: 100%;
+    margin: 0 0 4px;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1.2;
+}
+
+.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title p {
+    grid-column: 2;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+}
+
+.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title .mcv-svc-cta-note {
+    grid-column: 2;
 }
 
 .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: clamp(10px, 2vw, 14px);
     justify-content: flex-end;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
 }
 
 .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions .mcv-btn-reserver,
-.mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions .mcv-btn-google-reviews {
+.mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions .mcv-btn-google-reviews,
+.mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions .mcv-cta-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    padding: 14px 22px;
-    font-size: 14px;
+    padding: 12px clamp(14px, 2.5vw, 22px);
+    font-size: clamp(13px, 1.8vw, 14px);
     font-weight: 600;
     text-transform: none !important;
     letter-spacing: 0;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
     text-decoration: none;
     float: none !important;
+    min-width: 0 !important;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.35;
+    flex: 1 1 auto;
 }
 
 .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions .mcv-btn-reserver {
@@ -6425,6 +6522,13 @@ body.mcv-landing {
     background-color: #fff !important;
     color: var(--mcv-dark) !important;
     border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    gap: 8px;
+}
+
+.mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-btn-google-reviews__icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
 }
 
 .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions .mcv-btn-google-reviews:hover,
@@ -6447,10 +6551,11 @@ body.mcv-landing {
 }
 
 .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-end;
     align-items: center;
-    gap: 10px;
+    gap: clamp(8px, 1.5vw, 12px);
+    overflow-x: visible;
 }
 
 .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .btn_block.mcv-service-cta-actions--stores {
@@ -6509,49 +6614,43 @@ body.mcv-landing {
     padding: 10px 16px;
 }
 
-@media (max-width: 1199px) {
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box:has(.mcv-service-cta-actions--stores) {
+@media (max-width: 1100px) {
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: clamp(20px, 4vw, 28px);
     }
 
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box:has(.mcv-service-cta-actions--stores) .left,
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box:has(.mcv-service-cta-actions--stores) .right {
-        max-width: 100%;
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .right {
         justify-self: stretch;
+        width: 100%;
     }
-}
 
-@media (max-width: 991px) {
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .left {
-        flex: unset;
-        max-width: 100%;
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title .customer_icon {
+        grid-row: auto;
+        grid-column: auto;
+        margin-bottom: 12px;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title h3,
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title p,
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .section_title .mcv-svc-cta-note {
+        text-align: center;
     }
 
     .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions,
     .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores {
         justify-content: center;
     }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .right:has(.mcv-service-cta-actions--stores) {
-        width: 100%;
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores {
-        justify-content: center;
-        max-width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        padding-bottom: 4px;
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores::-webkit-scrollbar {
-        display: none;
-    }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 640px) {
     .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions:not(.mcv-service-cta-actions--stores) {
         flex-direction: column;
         align-items: stretch;
@@ -6560,37 +6659,19 @@ body.mcv-landing {
     .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions:not(.mcv-service-cta-actions--stores) .mcv-btn-reserver,
     .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions:not(.mcv-service-cta-actions--stores) .mcv-btn-google-reviews {
         width: 100%;
-        justify-content: center;
+        flex: 1 1 100%;
     }
 
     .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores {
-        flex-direction: row;
-        flex-wrap: nowrap;
+        flex-direction: column;
         align-items: stretch;
     }
 
     .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-store-badge,
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-btn-reserver {
-        width: auto;
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-btn-reserver,
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-cta-btn {
+        width: 100%;
         justify-content: center;
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-store-badge {
-        padding: 8px 10px;
-        gap: 8px;
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-store-badge__line {
-        display: none;
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-store-badge__brand {
-        font-size: 13px;
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-btn-reserver {
-        padding: 8px 12px;
-        font-size: 13px;
     }
 }
 
