@@ -30,13 +30,15 @@
 
     el.dataset.typedReady = '1';
 
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     $('#typed').typed({
       strings: strings,
-      typeSpeed: 100,
+      typeSpeed: reduceMotion ? 0 : 100,
       startDelay: 0,
-      backSpeed: 60,
-      backDelay: 2000,
-      loop: true,
+      backSpeed: reduceMotion ? 0 : 60,
+      backDelay: reduceMotion ? 0 : 2000,
+      loop: !reduceMotion,
       cursorChar: '|',
       contentType: 'html',
     });

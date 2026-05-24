@@ -2572,7 +2572,8 @@
         scroll-snap-stop: always;
     }
 
-    .mcv-landing .mcv-features-section {
+    /* Scroll-snap / hauteur figée : landing template uniquement (pas hub ni pages services) */
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section {
         scroll-snap-align: start;
         scroll-snap-stop: always;
         min-height: 100dvh;
@@ -2584,12 +2585,12 @@
         overflow: hidden;
     }
 
-    .mcv-landing .mcv-features-section.row_am {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section.row_am {
         padding-top: 0;
         padding-bottom: 0;
     }
 
-    .mcv-landing .mcv-features-section .inner_sec {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .inner_sec {
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -2600,19 +2601,19 @@
         width: 100%;
     }
 
-    .mcv-landing .mcv-features-section .mcv-features-heading {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .mcv-features-heading {
         margin-bottom: 0;
         margin-top: 0;
         padding-top: 0;
     }
 
-    .mcv-landing .mcv-features-section .mcv-features-heading h2 {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .mcv-features-heading h2 {
         font-size: clamp(1.85rem, 3vw, 2.35rem);
         margin-top: 0;
         margin-bottom: 18px;
     }
 
-    .mcv-landing .mcv-features-section .mcv-features-heading p {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .mcv-features-heading p {
         padding-left: 8%;
         padding-right: 8%;
         margin-bottom: 56px;
@@ -2620,11 +2621,11 @@
         line-height: 1.5;
     }
 
-    .mcv-landing .mcv-features-section .whychoose_dh {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .whychoose_dh {
         margin-top: 0;
     }
 
-    .mcv-landing .mcv-features-section .mcv-features-visual-col {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .mcv-features-visual-col {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -2633,32 +2634,32 @@
         margin-top: 24px;
     }
 
-    .mcv-landing .mcv-features-section .whychoose_box {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .whychoose_box {
         padding: 18px 20px;
         margin-bottom: 16px;
         max-width: 100%;
     }
 
-    .mcv-landing .mcv-features-section .choose_text {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .choose_text {
         padding-left: 80px;
     }
 
-    .mcv-landing .mcv-features-section .choose_text h6 {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .choose_text h6 {
         font-size: 16px;
         margin-bottom: 6px;
     }
 
-    .mcv-landing .mcv-features-section .choose_text p {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .choose_text p {
         font-size: 14px;
         line-height: 1.5;
     }
 
-    .mcv-landing .mcv-features-section .mcv-features-visual {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .mcv-features-visual {
         min-height: min(58vh, 480px);
         width: 100%;
     }
 
-    .mcv-landing .mcv-features-section .choose_img .mcv-features-screen {
+    .mcv-landing:not(.mcv-page-hub):not(.mcv-page-service):not(.mcv-page-app) .mcv-features-section .choose_img .mcv-features-screen {
         max-width: min(380px, 42vw);
         max-height: min(62vh, 540px);
     }
@@ -6797,13 +6798,38 @@ body.mcv-landing {
     border-color: transparent;
 }
 
+/* Preloader : repli si le JS ne parvient pas à le masquer */
+.mcv-landing #preloader {
+    animation: mcv-preloader-hide 0.4s ease 4s forwards;
+}
+
+@keyframes mcv-preloader-hide {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+/* Points décoratifs : alléger le GPU sur pages hub/services */
+.mcv-landing.mcv-page-hub .dotes_anim_bloack .dots::before,
+.mcv-landing.mcv-page-service .dotes_anim_bloack .dots::before,
+.mcv-landing.mcv-page-app .dotes_anim_bloack .dots::before {
+    animation-duration: 18s;
+}
+
 /* Réduction des animations si l'utilisateur le demande (perf + accessibilité) */
 @media (prefers-reduced-motion: reduce) {
     .mcv-landing .moving_position_animatin,
     .mcv-landing .mcv-hero-scroll__icon,
     .mcv-landing .mcv-hero-float-card,
     .mcv-landing .mcv-hero-photo-float,
-    .mcv-landing .mcv-hero-app-logo-wrap {
+    .mcv-landing .mcv-hero-app-logo-wrap,
+    .mcv-landing .dotes_anim_bloack .dots,
+    .mcv-landing .dotes_anim_bloack .dots::before,
+    .mcv-landing #loader,
+    .mcv-landing #loader::before,
+    .mcv-landing #loader::after {
         animation: none !important;
     }
 }

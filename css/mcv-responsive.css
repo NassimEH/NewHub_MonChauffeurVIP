@@ -115,6 +115,8 @@ html {
 .mcv-landing.mcv-page-app .banner_section--fullscreen {
     scroll-snap-align: none !important;
     scroll-snap-stop: normal !important;
+    max-height: none;
+    overflow: visible;
 }
 
 @media (max-width: 991px) {
