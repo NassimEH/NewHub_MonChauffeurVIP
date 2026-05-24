@@ -120,8 +120,202 @@ html {
 }
 
 @media (max-width: 991px) {
-    .mcv-landing .mcv-footer .top_footer {
+    .mcv-landing:not(.mcv-page-service) .mcv-footer .top_footer {
         padding-top: 72px;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-footer .top_footer {
+        padding-top: clamp(96px, 20vw, 132px);
+    }
+
+    /* CTA bas de page — responsive mobile (override template style.css / responsive.css) */
+    .mcv-landing .mcv-cta-section.cta_section.new {
+        padding-top: clamp(32px, 6vw, 48px);
+        padding-bottom: clamp(20px, 4vw, 32px);
+        overflow-x: clip;
+    }
+
+    .mcv-landing .mcv-cta-section .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: clamp(16px, 4.5vw, 24px);
+        padding-right: clamp(16px, 4.5vw, 24px);
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        align-items: stretch !important;
+        justify-content: stretch !important;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        gap: clamp(20px, 4vw, 28px);
+        padding: clamp(28px, 5vw, 40px) clamp(18px, 4vw, 28px) !important;
+        margin-bottom: clamp(-64px, -10vw, -88px) !important;
+        overflow: hidden;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .left,
+    .mcv-landing .mcv-cta-section .cta_box .right {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0;
+        flex: unset !important;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .right {
+        justify-self: stretch;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .section_title {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-left: 0 !important;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .section_title .customer_icon {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        margin-bottom: 12px;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .section_title h3,
+    .mcv-landing .mcv-cta-section .cta_box .section_title p,
+    .mcv-landing .mcv-cta-section .cta_box .section_title .mcv-svc-cta-note {
+        width: 100%;
+        max-width: 100%;
+        text-align: center !important;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .section_title h3 {
+        font-size: clamp(1.25rem, 5.2vw, 1.75rem);
+        line-height: 1.2;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .section_title p,
+    .mcv-landing .mcv-cta-section .cta_box .section_title .mcv-svc-cta-note {
+        font-size: clamp(0.875rem, 2.6vw, 0.9375rem);
+        line-height: 1.55;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .btn_block,
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 10px;
+        height: auto !important;
+    }
+
+    .mcv-landing .mcv-cta-section .cta_box .btn,
+    .mcv-landing .mcv-cta-section .mcv-cta-btn,
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions .mcv-btn-reserver,
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions .mcv-btn-google-reviews,
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions .mcv-cta-btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        float: none !important;
+        white-space: normal !important;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions--stores {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        flex-wrap: unset !important;
+    }
+
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions--stores .mcv-store-badge {
+        width: 100% !important;
+        min-width: 0 !important;
+        white-space: normal !important;
+        justify-content: center;
+        padding: 10px 12px;
+    }
+
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions--stores .mcv-store-badge__line {
+        display: none;
+    }
+
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions--stores .mcv-cta-btn,
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions--stores .mcv-btn-reserver {
+        grid-column: 1 / -1;
+    }
+
+    /* Hero mobile — reset legacy template + alignement commun */
+    .mcv-landing .banner_section .banner_text {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .mcv-landing .banner_section .banner_text p:not(.mcv-hero-trust-line) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        max-width: 36rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mcv-landing .banner_section .banner_text .type-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mcv-landing .banner_section--fullscreen > .container {
+        align-items: center;
+        justify-content: center;
+        padding-top: 0;
+    }
+
+    .mcv-landing .banner_section--fullscreen .mcv-hero-row {
+        justify-content: center;
+        align-items: center;
+        gap: clamp(20px, 5vw, 28px);
+    }
+
+    .mcv-landing .banner_section--fullscreen .mcv-hero-row > [class*="col-"] {
+        padding-left: 0;
+        padding-right: 0;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Hub accueil — contenu centré verticalement et horizontalement */
+    .mcv-landing.mcv-page-hub .banner_section--fullscreen,
+    .mcv-landing.mcv-page-hub #mcv-hero.mcv-hero--hub {
+        min-height: min(100dvh, 760px);
+        max-height: none;
+        justify-content: center;
+        padding-top: clamp(80px, 16vw, 104px);
+        padding-bottom: clamp(44px, 8vw, 64px);
+    }
+
+    .mcv-landing.mcv-page-hub .mcv-hero-row--hub {
+        flex: 0 1 640px;
+        max-width: 100%;
+    }
+
+    .mcv-landing.mcv-page-hub #mcv-hero.mcv-hero--hub .banner_text,
+    .mcv-landing.mcv-page-hub #mcv-hero.mcv-hero--hub .banner_text p {
+        text-align: center;
+        max-width: 100%;
     }
 
     .mcv-landing.mcv-page-service .banner_section--fullscreen,
@@ -130,6 +324,7 @@ html {
         min-height: 0;
         height: auto;
         overflow: visible;
+        justify-content: flex-start;
         padding-top: clamp(72px, 14vw, 96px);
         padding-bottom: clamp(28px, 5vw, 48px);
     }
@@ -137,9 +332,10 @@ html {
     .mcv-landing.mcv-page-service .mcv-service-hero .banner_text,
     .mcv-landing.mcv-page-app .mcv-app-hero .banner_text {
         text-align: center;
-        max-width: 100%;
+        max-width: min(540px, 100%);
         margin-left: auto;
         margin-right: auto;
+        padding: 0 !important;
     }
 
     .mcv-landing.mcv-page-service .mcv-service-hero .banner_text p.mcv-hero-trust-line,
@@ -147,10 +343,77 @@ html {
         justify-content: center;
     }
 
-    .mcv-landing.mcv-page-service .mcv-hero-cta-wrap,
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row {
-        justify-content: center;
+    .mcv-landing.mcv-page-service .mcv-hero-cta-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
         width: 100%;
+        max-width: min(420px, 100%);
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-hero-cta-wrap .mcv-btn-reserver,
+    .mcv-landing.mcv-page-service .mcv-hero-cta-wrap .mcv-btn-google-reviews {
+        width: 100%;
+        max-width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    /* App mobile — 3 boutons empilés (2 stores + CTA pleine largeur) */
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        width: 100%;
+        max-width: min(420px, 100%);
+        margin-left: auto;
+        margin-right: auto;
+        overflow-x: visible;
+        justify-content: center;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        gap: 10px;
+        flex: none;
+        margin: 0;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li {
+        flex: none;
+        width: 100%;
+        min-width: 0;
+        margin: 0 !important;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li a.mcv-store-badge {
+        width: 100%;
+        min-height: 46px;
+        justify-content: center;
+        padding: 10px 12px;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-store-badge__line {
+        display: none;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-store-badge__brand {
+        font-size: 13px;
+    }
+
+    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-cta-site {
+        width: 100%;
+        flex: none;
+        padding: 12px 18px;
+        font-size: 14px;
+        white-space: normal;
+        text-align: center;
     }
 
     .mcv-landing.mcv-page-service .mcv-hero-visual.mcv-hero-visual--photo,
@@ -161,6 +424,8 @@ html {
         align-items: center;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 0 !important;
+        min-height: auto;
     }
 
     .mcv-landing.mcv-page-service .mcv-hero-visual--photo .hero_image_1,
@@ -170,11 +435,48 @@ html {
         justify-content: center;
     }
 
+    .mcv-landing.mcv-page-service .banner_section .mcv-hero-visual--photo .hero_image_1 img.mcv-hero-photo {
+        margin-top: 0;
+        max-width: min(420px, 88vw);
+    }
+
     .mcv-landing.mcv-page-app .mcv-hero-app-logo {
         width: min(200px, 58vw);
         height: min(200px, 58vw);
         max-width: 200px;
         max-height: 200px;
+    }
+
+    /* Flèches prev/next hero — visibles sur toute la plage mobile/tablette */
+    .mcv-landing .banner_section--fullscreen {
+        overflow: visible;
+    }
+
+    .mcv-landing .mcv-hero-service-nav {
+        display: flex !important;
+        z-index: 20;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: clamp(2px, 1vw, 8px);
+        padding-right: clamp(2px, 1vw, 8px);
+        padding-top: clamp(76px, 15vw, 100px);
+        padding-bottom: clamp(40px, 8vw, 64px);
+        pointer-events: none;
+    }
+
+    .mcv-landing .mcv-hero-service-nav__btn {
+        pointer-events: auto;
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        color: rgba(31, 27, 20, 0.82);
+    }
+
+    .mcv-landing .mcv-hero-service-nav__btn::before {
+        width: 16px;
+        height: 16px;
+        border-left-width: 1.5px;
+        border-bottom-width: 1.5px;
     }
 
     .mcv-landing.mcv-page-hub .mcv-hub-why-section {
@@ -276,60 +578,16 @@ html {
         line-height: 1.25;
     }
 
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row {
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        gap: 8px;
-        margin-left: 0;
-        margin-right: 0;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row::-webkit-scrollbar {
-        display: none;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores {
-        width: auto;
-        flex: 0 1 auto;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li {
-        flex: 0 0 auto;
-        min-width: 0;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-cta-site {
-        flex: 0 0 auto;
-        width: auto;
-    }
-
     .mcv-landing .mcv-svc-card {
         padding: 22px 18px;
     }
 
-    .mcv-landing .mcv-svc-cta-box,
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box {
-        padding: clamp(24px, 5vw, 32px) clamp(18px, 4vw, 24px);
-        border-radius: 12px;
-        margin-bottom: clamp(-72px, -12vw, -100px);
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions--stores {
+        grid-template-columns: 1fr;
     }
 
-    .mcv-landing .mcv-svc-cta-box .section_title h2,
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .section_title h3 {
-        font-size: clamp(1.25rem, 5.5vw, 1.65rem);
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions .mcv-btn-google-reviews {
-        gap: 8px;
-    }
-
-    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-btn-google-reviews__icon {
-        flex-shrink: 0;
+    .mcv-landing .mcv-cta-section .mcv-service-cta-actions--stores .mcv-store-badge__brand {
+        font-size: 13px;
     }
 
     .mcv-landing .mcv-hub-services-nav {
@@ -348,6 +606,10 @@ html {
 
     .mcv-landing .mcv-footer .top_footer {
         padding-top: 56px;
+    }
+
+    .mcv-landing.mcv-page-service .mcv-footer .top_footer {
+        padding-top: clamp(88px, 18vw, 120px);
     }
 
     .mcv-landing .mcv-footer-main {
@@ -385,12 +647,6 @@ html {
         height: 44px;
     }
 
-    .mcv-landing .mcv-hero-service-nav {
-        padding-left: 6px;
-        padding-right: 6px;
-        padding-bottom: 56px;
-    }
-
     .mcv-landing .mcv-hero-service-nav__btn {
         width: 44px;
         height: 44px;
@@ -404,18 +660,7 @@ html {
 
 @media (max-width: 399px) {
     .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores {
-        flex-direction: row;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li {
-        flex: 0 0 auto;
-        width: auto;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li a.mcv-store-badge,
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-cta-site {
-        width: auto;
-        justify-content: center;
+        grid-template-columns: 1fr;
     }
 
     .mcv-landing .mcv-hub-services-nav__link {

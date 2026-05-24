@@ -58,7 +58,13 @@
       return;
     }
 
-    var hero = document.getElementById('mcv-hero') || document.getElementById('mcv-service-hero');
+    var hero =
+      document.getElementById('mcv-hero') ||
+      document.getElementById('mcv-service-hero') ||
+      document.getElementById('mcv-app-hero') ||
+      document.querySelector(
+        '.banner_section--fullscreen.mcv-hero--hub, .banner_section--fullscreen.mcv-service-hero, .banner_section--fullscreen.mcv-app-hero'
+      );
     if (!hero || hero.querySelector('.mcv-hero-service-nav')) {
       return;
     }

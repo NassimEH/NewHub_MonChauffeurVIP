@@ -558,6 +558,10 @@
     z-index: 1;
 }
 
+.mcv-landing .banner_section--fullscreen .mcv-hero-service-nav {
+    z-index: 20;
+}
+
 .mcv-landing .mcv-features-section > .mcv-hero-scroll,
 .mcv-landing .mcv-howwork-section > .mcv-hero-scroll {
     position: absolute;
@@ -618,7 +622,6 @@
 .mcv-landing .mcv-hero-service-nav {
     position: absolute;
     inset: 0;
-    z-index: 4;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -931,70 +934,14 @@
 
 @media (max-width: 991px) {
     .mcv-landing.mcv-page-app .mcv-hero-actions-row {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
     }
 }
 
 @media (max-width: 575px) {
     .mcv-landing.mcv-page-app .mcv-hero-actions-row {
-        flex-wrap: nowrap;
-        gap: 8px;
-        margin: 16px 0 14px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores {
-        flex: 1 1 auto;
-        min-width: 0;
-        gap: 8px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li {
-        flex: 1 1 0;
-        min-width: 0;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores li a.mcv-store-badge {
-        width: 100%;
-        padding: 8px 10px;
-        gap: 6px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-store-badge__line {
-        display: none;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-store-badge__brand {
-        font-size: 13px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores .mcv-store-badge__icon {
-        width: 20px;
-        height: 20px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores .mcv-store-badge__icon svg {
-        width: 18px;
-        height: 20px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores .mcv-store-badge__icon--play {
-        width: 22px;
-        height: 20px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-stores .mcv-store-badge__play-logo {
-        width: 22px;
-        height: 22px;
-    }
-
-    .mcv-landing.mcv-page-app .mcv-hero-actions-row .mcv-hero-cta-site {
-        flex: 0 1 auto;
-        min-width: 0;
-        padding: 8px 12px;
-        font-size: 12px;
-        white-space: nowrap;
-        text-align: center;
-        line-height: 1.2;
+        gap: 10px;
+        margin: 16px auto 14px;
     }
 }
 
@@ -2306,7 +2253,7 @@
 }
 
 @media (max-width: 991px) {
-    .mcv-landing .banner_section--fullscreen {
+    .mcv-landing .banner_section--fullscreen:not(.mcv-hero--hub) {
         min-height: 100vh;
         min-height: 100dvh;
         padding-top: 88px;
@@ -2314,7 +2261,7 @@
         justify-content: flex-start;
     }
 
-    .mcv-landing .banner_section--fullscreen > .container {
+    .mcv-landing .banner_section--fullscreen:not(.mcv-hero--hub) > .container {
         align-items: flex-start;
         padding-top: 8px;
     }
@@ -5093,7 +5040,7 @@ body.mcv-landing {
     gap: 10px;
     width: auto;
     min-height: 0;
-    min-width: 220px;
+    min-width: 0;
     padding: 10px 14px;
     border-radius: 7px;
     text-decoration: none;
@@ -5104,6 +5051,12 @@ body.mcv-landing {
     background-image: none !important;
     box-sizing: border-box;
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+@media (min-width: 992px) {
+    .mcv-landing .mcv-cta-section .mcv-cta-btn {
+        min-width: 220px;
+    }
 }
 
 .mcv-landing .mcv-cta-section .mcv-cta-btn__icon {
@@ -6582,18 +6535,20 @@ body.mcv-landing {
     overflow-x: visible;
 }
 
-.mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .btn_block.mcv-service-cta-actions--stores {
-    flex-wrap: nowrap;
-    gap: 10px;
-}
+@media (min-width: 992px) {
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .cta_box .btn_block.mcv-service-cta-actions--stores {
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
 
-.mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-store-badge,
-.mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-btn-reserver,
-.mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-cta-btn {
-    flex: 0 0 auto;
-    width: auto;
-    min-width: 0;
-    white-space: nowrap;
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-store-badge,
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-btn-reserver,
+    .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-cta-btn {
+        flex: 0 0 auto;
+        width: auto;
+        min-width: 0;
+        white-space: nowrap;
+    }
 }
 
 .mcv-landing.mcv-page-service .mcv-service-cta-section .mcv-service-cta-actions--stores .mcv-store-badge__text,
